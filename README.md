@@ -10,6 +10,7 @@ Changes from the original page:
 - Eco Friendly / Non Toxic / Plant Based shown as a USP row instead of two dropdowns.
 - Before/After slider rebuilt: labels match the photos, starts off-centre with one hint sweep, drag or tap anywhere.
 - Ingredients moved out of the dropdown into a "Powered by nature" section.
+- FAQs moved out of the dropdowns into a full-width section above Customer Reviews (first question's title/answer split fixed, last answer completed).
 - Special Offer block removed; remaining dropdowns reordered and closed by default.
 
 Notes:
