@@ -3741,22 +3741,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <a class="tp-atc" href="https://www.happi-planet.com/cart/67673754206444:1" data-variant-id="67673754206444">Add To Cart</a>
 
-        <div class="tp-pin">
-          <form class="tp-pin__form" id="tp-pin-form" novalidate>
-            <label class="tp-pin__label" for="tp-pin-input">Check delivery date</label>
-            <div class="tp-pin__row">
-              <input class="tp-pin__input" id="tp-pin-input" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="6" placeholder="Enter pincode" aria-describedby="tp-pin-error">
-              <button class="tp-pin__btn" type="submit">Check</button>
-            </div>
-            <p class="tp-pin__error" id="tp-pin-error" role="alert" hidden>Please enter a valid 6-digit pincode.</p>
-          </form>
-          <div class="tp-delivery" id="tp-delivery" hidden>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 4h13v11H1z"/><path d="M14 8h4l3 3v4h-7z"/><circle cx="5.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></svg>
-            <span class="tp-delivery__text">Delivery to <strong id="tp-delivery-pin"></strong> by <strong id="tp-delivery-date"></strong></span>
-            <button class="tp-delivery__change" id="tp-pin-change" type="button">Change</button>
-          </div>
-        </div>
-
         <ul class="tp-usps">
           <li class="tp-usps__item"><img src="./assets/Eco_Friendly.png" alt="" width="36" height="36" loading="lazy"><span>Eco Friendly</span></li>
           <li class="tp-usps__item"><img src="./assets/Non_Toxic_1005bb50-5195-48e2-a18f-55136da19eae.png" alt="" width="36" height="36" loading="lazy"><span>Non Toxic</span></li>
@@ -3771,28 +3755,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){gift.classList.add('is-open');io.disconnect();}});},{threshold:.35});
             io.observe(gift);
           }
-          var form=document.getElementById('tp-pin-form'); if(!form) return;
-          var input=document.getElementById('tp-pin-input'), err=document.getElementById('tp-pin-error');
-          var box=document.getElementById('tp-delivery'), KEY='tp-pincode';
-          function add(d,n){var x=new Date(d);x.setDate(x.getDate()+n);if(x.getDay()===0)x.setDate(x.getDate()+1);return x;}
-          function show(pin){
-            var o={weekday:'short',day:'numeric',month:'short'}, t=new Date();
-            document.getElementById('tp-delivery-pin').textContent=pin;
-            document.getElementById('tp-delivery-date').textContent=add(t,3).toLocaleDateString('en-IN',o)+' \u2013 '+add(t,5).toLocaleDateString('en-IN',o);
-            form.hidden=true; box.hidden=false;
-          }
-          input.addEventListener('input',function(){input.value=input.value.replace(/\D/g,'').slice(0,6);err.hidden=true;input.removeAttribute('aria-invalid');});
-          form.addEventListener('submit',function(e){
-            e.preventDefault();
-            var pin=input.value.trim();
-            if(!/^[1-9][0-9]{5}$/.test(pin)){err.hidden=false;input.setAttribute('aria-invalid','true');input.focus();return;}
-            try{localStorage.setItem(KEY,pin);}catch(_){}
-            show(pin);
-          });
-          document.getElementById('tp-pin-change').addEventListener('click',function(){
-            box.hidden=true; form.hidden=false; input.focus(); input.select();
-          });
-          try{var saved=localStorage.getItem(KEY); if(saved&&/^[1-9][0-9]{5}$/.test(saved)){input.value=saved;show(saved);}}catch(_){}
         })();
       </script>
       <style>
@@ -3826,22 +3788,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         .tp-box__size{font-size:11px;font-weight:500;color:#6b7a78;margin-top:1px}
         .tp-atc{display:flex;align-items:center;justify-content:center;width:100%;min-height:50px;margin-top:16px;padding:12px 24px;border-radius:50px;background:#006056;color:#fff;font-weight:600;font-size:16px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;box-sizing:border-box;transition:background .2s}
         .tp-atc:hover,.tp-atc:focus-visible{background:#004a42;color:#fff}
-        .tp-delivery{display:flex;align-items:center;gap:10px;margin-top:12px;padding:10px 14px;border:1px dashed #b9d6d2;border-radius:12px;color:#00605e;font-size:13.5px;font-weight:500}
-        .tp-delivery svg{flex:0 0 auto}
-        .tp-delivery strong{font-weight:700}
-        .tp-delivery[hidden],.tp-pin__form[hidden],.tp-pin__error[hidden]{display:none}
-        .tp-delivery__text{flex:1;min-width:0}
-        .tp-delivery__change{flex:0 0 auto;background:none;border:0;padding:4px 0;color:#00605e;font:600 13px Poppins,sans-serif;text-decoration:underline;cursor:pointer}
-        .tp-pin{margin-top:12px}
-        .tp-pin__label{display:block;margin-bottom:6px;font-size:13.5px;font-weight:700;color:#1d2b2a}
-        .tp-pin__row{display:flex;border:1.5px solid #cfe3e0;border-radius:50px;overflow:hidden;background:#fff;transition:border-color .2s}
-        .tp-pin__row:focus-within{border-color:#00605e}
-        .tp-pin__input{flex:1;min-width:0;height:44px;padding:0 16px;border:0;outline:0;background:transparent;font:500 16px Poppins,sans-serif;color:#1d2b2a;letter-spacing:.06em}
-        .tp-pin__input::placeholder{color:#8a9896;letter-spacing:0;font-size:14px}
-        .tp-pin__input[aria-invalid="true"]{color:#c0392b}
-        .tp-pin__btn{flex:0 0 auto;margin:4px;padding:0 20px;border:0;border-radius:50px;background:#00605e;color:#fff;font:600 14px Poppins,sans-serif;cursor:pointer;transition:background .2s}
-        .tp-pin__btn:hover,.tp-pin__btn:focus-visible{background:#004a42}
-        .tp-pin__error{margin:6px 0 0 4px;font-size:12.5px;font-weight:500;color:#c0392b}
         .tp-usps{list-style:none;margin:14px 0 0;padding:12px 0 0;border-top:1px solid #e5e5e5;display:grid;grid-template-columns:repeat(3,1fr)}
         .tp-usps__item{display:flex;flex-direction:column;align-items:center;gap:6px;margin:0;text-align:center;font-size:12.5px;font-weight:700;color:#00605e}
         .tp-usps__item+.tp-usps__item{border-left:1px solid #e5e5e5}
